@@ -1,5 +1,0 @@
-[Fri Oct 28 03:40:42.150935 2016] [:error] [pid 27358] [client 195.74.250.177:55305] script '/var/www/html/test.com/public/ndex.php' not found or unable to stat
-[Fri Oct 28 16:01:43.905730 2016] [:error] [pid 27520] [client 195.74.250.177:61805] script '/var/www/html/test.com/public/app.php' not found or unable to stat
-[Sat Oct 29 03:54:09.680727 2016] [core:alert] [pid 509] [client 195.74.250.177:57983] /var/www/html/test.com/public/.htaccess: Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration
-[Sat Oct 29 03:57:41.613856 2016] [core:alert] [pid 512] [client 195.74.250.177:59282] /var/www/html/test.com/public/.htaccess: Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration
-[Sat Oct 29 04:06:44.147893 2016] [core:error] [pid 728] (13)Permission denied: [client 195.74.250.177:62889] AH00035: access to /phpmyadmin denied (filesystem path '/root/phpmyadmin') because search permissions are missing on a component of the path

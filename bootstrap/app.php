@@ -1,23 +1,26 @@
 <?php
 
 use Respect\Validation\Validator as v;
+use Noodlehaus\Config;
 
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$config = new Config(__DIR__ . '/../app/config');
+
 $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true,
         'db' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'test',
-            'username' => 'root',
-            'password' => 'lucnuc32801',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' =>'',
+            'driver' => $config->get('mysql.driver'),
+            'host' => $config->get('mysql.host'),
+            'database'  => $config->get('mysql.database'),
+            'username'  => $config->get('mysql.username'),
+            'password'  => $config->get('mysql.password'),
+            'charset'   => $config->get('mysql.charset'),
+            'collation' => $config->get('mysql.collation'),
+            'prefix'    => $config->get('mysql.prefix'),
         ]
     ],
 ]);

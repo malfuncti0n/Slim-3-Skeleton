@@ -3,7 +3,7 @@ return [
     'mysql'=>[
         'driver' => 'mysql',
         'host' => 'localhost',
-        'database' => 'series',
+        'database' => 'test',
         'username' => 'test',
         'password' => 'lucnuc32801',
         'charset' => 'utf8',

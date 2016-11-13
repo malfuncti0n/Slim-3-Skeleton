@@ -19,11 +19,4 @@ class User extends Model
             'password' => password_hash($password, PASSWORD_DEFAULT),
         ]);
     }
-    public function users(){
-        return $this->orderBy('id','asc')->get();
-    }
-
-    public function deleteUsers($id){
-        $this->whereIn('id', $id)->delete();
-    }
 }

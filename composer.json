@@ -5,8 +5,7 @@
         "illuminate/database": "^5.3",
         "respect/validation": "^1.1",
         "slim/csrf": "^0.7.0",
-        "slim/flash": "^0.1.0",
-        "hassankhan/config": "^0.10.0"
+        "slim/flash": "^0.1.0"
     },
     "autoload": {
         "psr-4": {

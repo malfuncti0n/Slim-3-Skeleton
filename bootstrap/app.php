@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 use Respect\Validation\Validator as v;
 
@@ -10,14 +11,14 @@ $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true,
         'db' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'test',
-            'username' => 'root',
-            'password' => 'lucnuc32801',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' =>'',
+            'driver' => $config->get('mysql.driver'),
+            'host' => $config->get('mysql.host'),
+            'database'  => $config->get('mysql.database'),
+            'username'  => $config->get('mysql.username'),
+            'password'  => $config->get('mysql.password'),
+            'charset'   => $config->get('mysql.charset'),
+            'collation' => $config->get('mysql.collation'),
+            'prefix'    => $config->get('mysql.prefix'),
         ]
     ],
 ]);
@@ -43,8 +44,10 @@ $container['flash'] = function ($container){
 
 $container['view'] = function($container){
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views',[
-        'cache' => false
+        'cache' => false,
+        'debug' => true
     ]);
+    $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container->router,
         $container->request->getUri()
@@ -71,6 +74,10 @@ $container['AuthController'] = function ($container){
 
 $container['PasswordController'] = function ($container){
     return new \App\Controllers\Auth\PasswordController($container);
+};
+
+$container['UsersController'] = function ($container){
+    return new \App\Controllers\Admin\UsersController($container);
 };
 
 $container['csrf'] = function ($container){

@@ -2,10 +2,13 @@
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 use Respect\Validation\Validator as v;
+use Noodlehaus\Config;
 
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
+
+$config = new Config(__DIR__ . '/../app/config');
 
 $app = new \Slim\App([
     'settings' => [

@@ -18,4 +18,5 @@ $app->group('', function (){
 
     $this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
     $this->post('/auth/password/change', 'PasswordController:postChangePassword');
+    $this->get('/video/upload', 'VideoController:getVideoUpload')->setName('video.upload');
 })->add(new AuthMiddleware($container));

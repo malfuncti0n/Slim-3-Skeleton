@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 use Respect\Validation\Validator as v;
 use Noodlehaus\Config;
@@ -46,8 +47,10 @@ $container['flash'] = function ($container){
 
 $container['view'] = function($container){
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views',[
-        'cache' => false
+        'cache' => false,
+        'debug' => true
     ]);
+    $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container->router,
         $container->request->getUri()
@@ -74,6 +77,10 @@ $container['AuthController'] = function ($container){
 
 $container['PasswordController'] = function ($container){
     return new \App\Controllers\Auth\PasswordController($container);
+};
+
+$container['UsersController'] = function ($container){
+    return new \App\Controllers\Admin\UsersController($container);
 };
 
 $container['csrf'] = function ($container){

@@ -11,12 +11,19 @@ class User extends Model
     protected $fillable = [
         'email',
         'name',
-        'password'
+        'password',
+        'token',
+        'verified'
     ];
 
     public function setPassword($password){
         $this->update([
             'password' => password_hash($password, PASSWORD_DEFAULT),
+        ]);
+    }
+    public function setVerified(){
+        $this->update([
+            'verified' => '1',
         ]);
     }
     public function users(){

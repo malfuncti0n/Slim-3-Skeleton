@@ -28,8 +28,21 @@ class AuthController extends Controller
         $user = User:: create([
             'email' => $request->getParam('email'),
             'name' => $request->getParam('name'),
-            'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT)
+            'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+            'token' => bin2hex(random_bytes(32))
         ]);
+
+        $message = "     
+                      Hello $user->name,
+                      <br /><br />
+                      Welcome to Series!<br/>
+                      To complete your registration  please , just click following link<br/>
+                      <br /><br />
+                      <a href='http://www.test.com/verification.php?id=$user->id&code=$user->token'>Click HERE to Activate :)</a>
+                      <br /><br />
+                      Thanks,";
+
+        $this->msg->sendMail($user->email, $message, 'Verification Email');
 
         $this->flash->addMessage('info', 'You have been signed up.');
 
@@ -58,4 +71,27 @@ class AuthController extends Controller
         $this->auth->logout();
         return $response->withRedirect($this->router->pathFor('home'));
     }
+
+//    public function getVerify($request, $response){
+//        return $this->view->render($response, 'auth/verify.twig');
+//
+//    }
+//    public function postVerify($request, $response){
+//
+//        $validation = $this->validator->validate($request, [
+//            'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+//            'name' => v::notEmpty()->alpha(),
+//            'password' => v::noWhitespace()->notEmpty(),
+//        ]);
+//
+//        if ($validation->failed())
+//        {
+//            return $response->withRedirect($this->router->pathFor('auth.verify'));
+//        }
+//
+//        $this->auth->user()->setVerified();
+//        $this->flash->addMessage('info', 'You have been verified.');
+//        return $response->withRedirect($this->router->pathFor('home'));
+//
+//    }
 }

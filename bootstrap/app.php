@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 use Respect\Validation\Validator as v;
 use Noodlehaus\Config;
@@ -39,6 +39,10 @@ $container['db'] = function ($container) use ($capsule){
 
 $container['auth'] = function ($container){
     return new \App\Auth\Auth;
+};
+
+$container['msg'] = function ($container){
+    return new \App\Services\Mailer;
 };
 
 $container['flash'] = function ($container){

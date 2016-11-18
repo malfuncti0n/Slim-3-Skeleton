@@ -12,6 +12,8 @@ $app->group('', function (){
     $this->get('/auth/signin', 'AuthController:getSignIn')->setName('auth.signin');
     $this->post('/auth/signin', 'AuthController:postSignIn');
 
+    $this->get('/auth/verification[/{id}[/{code}]]', 'AuthController:getVerify')->setName('auth.verify');
+
 })->add(new GuestMiddleware($container));
 
 $app->group('', function (){
@@ -22,8 +24,5 @@ $app->group('', function (){
 
     $this->get('/admin/users', 'UsersController:index')->setName('admin.users');
     $this->delete('/admin/users', 'UsersController:deleteUser')->setName('admin.users.delete');
-
-    $this->get('/auth/verify', 'AuthController:getVerify')->setName('auth.verify');
-    $this->post('/auth/verify', 'AuthController:postVerify');
 
 })->add(new AuthMiddleware($container));

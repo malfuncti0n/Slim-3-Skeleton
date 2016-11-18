@@ -12,6 +12,10 @@ class Auth
         if (!$user){
             return false;
         }
+        if ($user->verified == '0'){
+                $_SESSION['errors'] = "You must first activate your account.";
+            return false;
+        }
         if (password_verify($password, $user->password)){
             if(empty($_SESSION['user'])){
                 $_SESSION['user'] = true;

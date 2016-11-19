@@ -13,7 +13,8 @@ class User extends Model
         'name',
         'password',
         'token',
-        'verified'
+        'verified',
+        'groupid'
     ];
 
     public function setPassword($password){

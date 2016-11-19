@@ -34,8 +34,8 @@ class UserTable extends AbstractMigration
               ->addColumn('token', 'string', array('limit' => 255,'null' =>true))
               ->addColumn('verified', 'binary', array('default' => 0))
               ->addColumn('password', 'string', array('limit' => 255))
-              ->addColumn('created_at', 'datetime')
-              ->addColumn('updated_at', 'datetime', array('null' => true))
+              ->addColumn('created_at', 'timestamp', array('default' => 'CURRENT_TIMESTAMP'))
+              ->addColumn('updated_at', 'timestamp', array('null' => true))
               ->addIndex(array('email'), array('unique' => true))
               ->save();
 

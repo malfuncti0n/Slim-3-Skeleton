@@ -91,9 +91,6 @@ $container['csrf'] = function ($container){
     return new \Slim\Csrf\Guard;
 };
 
-$container['VideoController'] = function ($container){
-    return new \App\Controllers\VideoController($container);
-};
 
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));

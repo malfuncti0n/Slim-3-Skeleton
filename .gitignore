@@ -11,3 +11,7 @@ app/config/mail.php
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 phinx.yml
+=======
+/app/config/
+app/config/
+

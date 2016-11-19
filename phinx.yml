@@ -1,5 +1,5 @@
 paths:
-    migrations: %%PHINX_CONFIG_DIR%%/services/db/migrations
+    migrations: %%PHINX_CONFIG_DIR%%/app/services/db/migrations
     seeds: %%PHINX_CONFIG_DIR%%/app/services/db/seeds
 
 environments:

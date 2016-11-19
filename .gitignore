@@ -10,3 +10,4 @@ composer
 # composer.lock
 app/config/db.php
 phinx.yml
+app/config/db.php

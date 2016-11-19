@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use App\Models\User;
+use App\Models\Group;
 
 class Auth
 {
@@ -43,5 +44,17 @@ class Auth
         if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
         }
+    }
+
+    public function isAdmin(){
+        $groups=new Group;
+        $user=User::find($_SESSION['user']);
+
+        $group=$groups->getGroup($user->groupid);
+        if($group->permission!='admin'){
+            return false;
+        }
+        return true;
+
     }
 }

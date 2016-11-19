@@ -2,6 +2,7 @@
 
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
+use App\Middleware\AdminMiddleware;
 
 $app->get('/', 'HomeController:index')->setName('home');
 
@@ -16,6 +17,8 @@ $app->group('', function (){
 
 })->add(new GuestMiddleware($container));
 
+
+
 $app->group('', function (){
     $this->get('/auth/signout', 'AuthController:getSignOut')->setName('auth.signout');
 
@@ -26,3 +29,8 @@ $app->group('', function (){
     $this->delete('/admin/users', 'UsersController:deleteUser')->setName('admin.users.delete');
 
 })->add(new AuthMiddleware($container));
+
+$app->group('', function (){
+    $this->get('/admin/only', 'UsersController:index');
+
+})->add(new AdminMiddleware($container));

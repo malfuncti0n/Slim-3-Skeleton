@@ -22,6 +22,20 @@ class Validator
 
         return $this;
     }
+    public function validateArray($args, array $rules)
+    {
+        foreach ($rules as $key => $rule) {
+            try {
+                $rule->setName(ucfirst($key))->assert($args[$key]);
+            } catch (NestedValidationException $e) {
+                $this->errors[$key] = $e->getMessages();
+            }
+        }
+
+        $_SESSION['errors'] = $this->errors;
+
+        return $this;
+    }
     public function failed()
     {
         return !empty($this->errors);

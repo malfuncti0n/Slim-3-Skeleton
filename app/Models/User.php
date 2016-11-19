@@ -21,8 +21,8 @@ class User extends Model
             'password' => password_hash($password, PASSWORD_DEFAULT),
         ]);
     }
-    public function setVerified(){
-        $this->update([
+    public function setVerified($id, $code){
+        $this->where('id', $id)->where('token', $code)->update([
             'verified' => '1',
         ]);
     }

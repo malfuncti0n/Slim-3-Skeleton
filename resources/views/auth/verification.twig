@@ -6,19 +6,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Verify Account</div>
                 <div class="panel-body">
-                    <form action="{{ path_for('auth.verify') }}" method="post" autocomplete="off">
-                        <div class="form-group{{ errors.token ? ' has-error' : '' }}">
-                            <label for="token">Verification Code</label>
-                            <input type="text" name="token" id="token" class="form-control">
-                            {% if errors.token%}
-                                <span class="help-block">{{ errors.token | first }}</span>
-                            {% endif %}
-                        </div>
-                        <button type="submit" class="btn btn-default">Verify Account</button>
-                        {{ csrf.field | raw }}
-                    </form>
+                    {% if errors.id%}
+                        <span class="help-block">{{ errors.id | first }}</span>
+                    {% endif %}
+                    {% if errors.code%}
+                        <span class="help-block">{{ errors.code | first }}</span>
+                    {% endif %}
                 </div>
-            </div>
+         </div>
         </div>
     </div>
 {% endblock %}

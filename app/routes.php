@@ -24,13 +24,11 @@ $app->group('', function (){
 
     $this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
     $this->post('/auth/password/change', 'PasswordController:postChangePassword');
-
-    $this->get('/admin/users', 'UsersController:index')->setName('admin.users');
-    $this->delete('/admin/users', 'UsersController:deleteUser')->setName('admin.users.delete');
-
+    
 })->add(new AuthMiddleware($container));
 
 $app->group('', function (){
-    $this->get('/admin/only', 'UsersController:index');
+    $this->get('/admin/users', 'UsersController:index')->setName('admin.users');
+    $this->delete('/admin/users', 'UsersController:deleteUser')->setName('admin.users.delete');
 
 })->add(new AdminMiddleware($container));

@@ -35,7 +35,7 @@ class UserTable extends AbstractMigration
               ->addColumn('verified', 'binary', array('default' => 0))
               ->addColumn('password', 'string', array('limit' => 255))
               ->addColumn('created_at', 'datetime')
-              ->addColumn('updated', 'datetime', array('null' => true))
+              ->addColumn('updated_at', 'datetime', array('null' => true))
               ->addIndex(array('email'), array('unique' => true))
               ->save();
 

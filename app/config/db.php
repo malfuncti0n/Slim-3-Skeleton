@@ -1,13 +1,13 @@
 <?php
 return [
     'mysql'=>[
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'database' => 'holeproject',
-        'username' => 'root',
+        'driver' => '',
+        'host' => '',
+        'database' => '',
+        'username' => '',
         'password' => '',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
+        'charset' => '',
+        'collation' => '',
         'prefix' => ''
     ],
     'mail'=>[

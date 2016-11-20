@@ -29,6 +29,6 @@ $app->group('', function (){
 
 $app->group('', function (){
     $this->get('/admin/users', 'UsersController:index')->setName('admin.users');
-    $this->delete('/admin/users', 'UsersController:deleteUser')->setName('admin.users.delete');
+    $this->post('/admin/users', 'UsersController:updateUser')->setName('admin.users.update');
 
 })->add(new AdminMiddleware($container));

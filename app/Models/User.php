@@ -14,7 +14,9 @@ class User extends Model
         'password',
         'token',
         'verified',
-        'groupid'
+        'groupid',
+        'deleted',
+        'blocked'
     ];
 
     public function setPassword($password){
@@ -31,7 +33,20 @@ class User extends Model
         return $this->orderBy('id','asc')->get();
     }
 
-    public function deleteUsers($id){
-        $this->whereIn('id', $id)->delete();
+    public function deleteUsers($id)
+    {
+        $this->whereIn('id', $id)->update([
+            'deleted' => '1',
+        ]);
+    }
+    public function blockUsers($id){
+        $this->whereIn('id', $id)->update([
+            'blocked' => '1',
+        ]);
+    }
+    public function unblockUsers($id){
+        $this->whereIn('id', $id)->update([
+            'blocked' => '0',
+        ]);
     }
 }

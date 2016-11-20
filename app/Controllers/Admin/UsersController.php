@@ -14,15 +14,29 @@ class UsersController extends  Controller
         return $this->view->render($response, 'admin/users.twig');
     }
 
-    public function deleteUser($request, $response){
+    public function updateUser($request, $response){
+        $action = $request->getParam('UserAction');
         $selection = $request->getParam('check');
         $deletionFinal = implode(',', $selection);
         if (!isset($deletionFinal)){
+            $this->flash->addMessage('info', 'No selection were made.');
             return $response->withRedirect($this->router->pathFor('admin.users'));
         }
-        $this->auth->user()->deleteUsers($selection);
-        $this->flash->addMessage('info', 'The user deleted.');
-        return $response->withRedirect($this->router->pathFor('admin.users'));
+        if ($action == 'delete') {
+            $this->auth->user()->deleteUsers($selection);
+            $this->flash->addMessage('success', 'The user deleted.');
+            return $response->withRedirect($this->router->pathFor('admin.users'));
+        }
+        if ($action == 'block') {
+            $this->auth->user()->blockUsers($selection);
+            $this->flash->addMessage('success', 'The user blocked.');
+            return $response->withRedirect($this->router->pathFor('admin.users'));
+        }
+        if ($action == 'unblock') {
+            $this->auth->user()->unblockUsers($selection);
+            $this->flash->addMessage('success', 'The user unblocked.');
+            return $response->withRedirect($this->router->pathFor('admin.users'));
+        }
     }
 }
 

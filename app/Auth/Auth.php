@@ -17,6 +17,14 @@ class Auth
                 $_SESSION['errors'] = "You must first activate your account.";
             return false;
         }
+        if ($user->deleted == '1'){
+            $_SESSION['errors'] = "Your account has been deleted.";
+            return false;
+        }
+        if ($user->blocked == '1'){
+            $_SESSION['errors'] = "Your account is blocked.";
+            return false;
+        }
         if (password_verify($password, $user->password)){
             if(empty($_SESSION['user'])){
                 $_SESSION['user'] = true;

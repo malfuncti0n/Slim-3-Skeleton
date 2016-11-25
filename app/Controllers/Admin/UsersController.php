@@ -17,8 +17,7 @@ class UsersController extends  Controller
     public function updateUser($request, $response){
         $action = $request->getParam('UserAction');
         $selection = $request->getParam('check');
-        $deletionFinal = implode(',', $selection);
-        if (!isset($deletionFinal)){
+        if (!isset($selection)){
             $this->flash->addMessage('info', 'No selection were made.');
             return $response->withRedirect($this->router->pathFor('admin.users'));
         }

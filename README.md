@@ -5,15 +5,17 @@ functionality:
 
     login/register
   
-    admin users
+    Administration of users
   
-    permitions with midleware
+    Permitions with midleware
   
-    full logging of requests
+    Full logging of requests
   
     Csrf protection
   
-    validations
+    Validations
+    
+    Flush messages
   
     Database Support with Eloquent ORM
   

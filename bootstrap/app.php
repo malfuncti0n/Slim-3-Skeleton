@@ -68,6 +68,14 @@ $container['view'] = function($container){
     return $view;
 };
 
+$container['notFoundHandler']= function($container){
+    return function ($request, $response) use ($container){
+        return $container['view']->render($response->withStatus(404),'404.twig',[
+            "pageNotFound"=>"The page {$_SERVER['REQUEST_URI']} you was looking for, not found"
+            ]);
+    };
+};
+
 $container['validator'] = function ($container){
     return new App\Validation\Validator;
 };

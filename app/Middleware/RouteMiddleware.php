@@ -12,13 +12,10 @@ class RouteMiddleware extends Middleware
          //with zero we count guest
          $userid=(!$this->container->auth->check() ? 0 : $this->container->auth->user()->id);
          //get details from route
-         $route=$request->getAttribute('route');
          $audit=new Audit;
-//         var_dump($route);
-//        die();
-         $audit->route=($route ? $route->getName() : 'urlNotFound');
-         $method=($route ? $route->getMethods() :array('methodUnkown'));
-         $audit->method=$method[0];
+         $audit->route=$_SERVER['REQUEST_URI'];
+         $method=$_SERVER['REQUEST_METHOD'];
+         $audit->method=$method;
          $audit->userid=$userid;
          //save the request to database
          $audit->save();

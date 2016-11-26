@@ -1,22 +1,22 @@
 # SLim base project
 Slim base project with bootstrap code.
 
-functionality
+functionality:
 
-  login/register
+    login/register
   
-  admin users
+    admin users
   
-  permitions with midleware
+    permitions with midleware
   
-  full logging of requests
+    full logging of requests
   
-  Csrf protection
+    Csrf protection
   
-  validations
+    validations
   
-  Database Support with Eloquent ORM
+    Database Support with Eloquent ORM
   
-  Twig views
-  
-  Migrations for database Schema creation
+    Twig views
+    
+    Migrations for database Schema creation

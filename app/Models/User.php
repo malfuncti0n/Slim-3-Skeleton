@@ -38,7 +38,7 @@ class User extends Model
         foreach ($select as $value) {
             $value->update([
                 'deleted' => '1',
-                'email' => 'del_' . $value->email,
+                'email' => bin2hex(random_bytes(3)).'_'. $value->email,
             ]);
         }
     }

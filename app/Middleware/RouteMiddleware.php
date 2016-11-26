@@ -14,8 +14,10 @@ class RouteMiddleware extends Middleware
          //get details from route
          $route=$request->getAttribute('route');
          $audit=new Audit;
-         $audit->route=$route->getName();
-         $method=$route->getMethods();
+//         var_dump($route);
+//        die();
+         $audit->route=($route ? $route->getName() : 'urlNotFound');
+         $method=($route ? $route->getMethods() :array('methodUnkown'));
          $audit->method=$method[0];
          $audit->userid=$userid;
          //save the request to database

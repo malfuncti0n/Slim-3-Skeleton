@@ -19,4 +19,12 @@ class Audit extends Model
         'userid'
     ];
 
+
+    public function addAudit($data=[]){
+        $this->route=$data[0];
+        $this->method=$data[1];
+        $this->userid=$data[2];
+        $this->save();
+    }
+
 }

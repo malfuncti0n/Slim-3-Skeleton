@@ -7,4 +7,4 @@ composer
 app/config/
 phinx.yml
 composer.lock
-
+composer

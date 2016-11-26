@@ -14,3 +14,9 @@ functionality
   Csrf protection
   
   validations
+  
+  Database Support with Eloquent ORM
+  
+  Twig views
+  
+  Migrations for database Schema creation

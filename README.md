@@ -17,41 +17,40 @@ Where [my-app] the path you want to install it.
 5. `vendor/bin/phinx init`
 6. Change the [my-app]/phinx.yml as below:
 
-
-    paths:
-        migrations: %%PHINX_CONFIG_DIR%%/app/Services/db/migrations
-        seeds: %%PHINX_CONFIG_DIR%%/app/Services/db/seeds
-    
-    environments:
-        default_migration_table: phinxlog
-        default_database: development
-        production:
-            adapter: mysql
-            host: localhost
-            name: production_db
-            user: root
-            pass: ''
-            port: 3306
-            charset: utf8
-    
-        development:
-            adapter: mysql
-            host: localhost
-            name: your_db
-            user: your_db_user
-            pass: 'your_db_password'
-            port: 3306
-            charset: utf8
-    
-        testing:
-            adapter: mysql
-            host: localhost
-            name: testing_db
-            user: root
-            pass: ''
-            port: 3306
-            charset: utf8
-
+        paths:
+            migrations: %%PHINX_CONFIG_DIR%%/app/Services/db/migrations
+            seeds: %%PHINX_CONFIG_DIR%%/app/Services/db/seeds
+        
+        environments:
+            default_migration_table: phinxlog
+            default_database: development
+            production:
+                adapter: mysql
+                host: localhost
+                name: production_db
+                user: root
+                pass: ''
+                port: 3306
+                charset: utf8
+        
+            development:
+                adapter: mysql
+                host: localhost
+                name: your_db
+                user: your_db_user
+                pass: 'your_db_password'
+                port: 3306
+                charset: utf8
+        
+            testing:
+                adapter: mysql
+                host: localhost
+                name: testing_db
+                user: root
+                pass: ''
+                port: 3306
+                charset: utf8
+                
 7. `vendor/bin/phinx migrate -e development`
 8. Go into your database and at the users table add to user admin your email.
 9. Login as Admin with your email and password `admin`.

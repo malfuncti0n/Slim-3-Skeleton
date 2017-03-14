@@ -99,8 +99,8 @@ $container['UsersController'] = function ($container){
 $container['csrf'] = function ($container){
     return new \Slim\Csrf\Guard;
 };
-
-$app->add(new \App\Middleware\RouteMiddleware($container));
+//route middleware is doint the audit we can enable it in production system
+//$app->add(new \App\Middleware\RouteMiddleware($container));
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));
 $app->add(new \App\Middleware\CsrfViewMiddleware($container));

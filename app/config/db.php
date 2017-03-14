@@ -1,13 +1,13 @@
 <?php
 return [
     'mysql'=>[
-        'driver' => '',
-        'host' => '',
-        'database' => '',
-        'username' => '',
-        'password' => '',
-        'charset' => '',
-        'collation' => '',
+        'driver' => 'mysql',
+        'host' => getenv('DBHOST'),
+        'database' => getenv('DATABASE'),
+        'username' => getenv('DBUSER',
+        'password' => getenv('DBPASSWORD'),
+        'charset' => 'utf8',
+        'collation' => 'utf8_general_ci',
         'prefix' => ''
     ]
 ];

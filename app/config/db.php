@@ -4,7 +4,7 @@ return [
         'driver' => 'mysql',
         'host' => getenv('DBHOST'),
         'database' => getenv('DATABASE'),
-        'username' => getenv('DBUSER')
+        'username' => getenv('DBUSER'),
         'password' => getenv('DBPASSWORD'),
         'charset' => 'utf8',
         'collation' => 'utf8_general_ci',

@@ -30,14 +30,17 @@ class User extends Model
         ]);
     }
     public function users(){
-        return $this->orderBy('id','asc')->get();
+        return $this->where('deleted', 0)->orderBy('id','asc')->get();
     }
 
-    public function deleteUsers($id)
-    {
-        $this->whereIn('id', $id)->update([
-            'deleted' => '1',
-        ]);
+    public function deleteUsers($id){
+        $select = $this->whereIn('id', $id)->get();
+        foreach ($select as $value) {
+            $value->update([
+                'deleted' => '1',
+                'email' => bin2hex(random_bytes(3)).'_'. $value->email,
+            ]);
+        }
     }
     public function blockUsers($id){
         $this->whereIn('id', $id)->update([

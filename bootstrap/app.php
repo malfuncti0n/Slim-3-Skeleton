@@ -22,7 +22,8 @@ $app = new \Slim\App([
             'charset'   => $config->get('mysql.charset'),
             'collation' => $config->get('mysql.collation'),
             'prefix'    => $config->get('mysql.prefix'),
-        ]
+        ],
+        'determineRouteBeforeAppMiddleware' => true
     ],
 ]);
 
@@ -67,6 +68,14 @@ $container['view'] = function($container){
     return $view;
 };
 
+$container['notFoundHandler']= function($container){
+    return function ($request, $response) use ($container){
+        return $container['view']->render($response->withStatus(404),'404.twig',[
+            "url"=>$_SERVER['REQUEST_URI']
+            ]);
+    };
+};
+
 $container['validator'] = function ($container){
     return new App\Validation\Validator;
 };
@@ -91,7 +100,7 @@ $container['csrf'] = function ($container){
     return new \Slim\Csrf\Guard;
 };
 
-
+$app->add(new \App\Middleware\RouteMiddleware($container));
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));
 $app->add(new \App\Middleware\CsrfViewMiddleware($container));

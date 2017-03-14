@@ -6,5 +6,4 @@ composer
 /app/config/
 app/config/
 phinx.yml
-composer.lock
 composer
